@@ -1,0 +1,51 @@
+/**
+ * Created by luoping on 20/02/2017.
+ */
+public class LeapYear {
+    /** @param  year to be analyzed
+     *  @return true if year is a leap year
+     *          false if year is not a leap year
+     */
+    static boolean isLeapYear(int year) {
+        int x = year % 400;
+        int y = year % 4;
+        int z = year % 100;
+        if(x == 0){
+            return true;
+        }
+        else if(y == 0 & z != 0){
+            return true;
+        }
+        else return false;// YOUR CODE HERE
+    }
+
+    /** Calls isLeapYear to print correct statement.
+     *  @param  year to be analyzed
+     */
+    private static void checkLeapYear(int year) {
+        if (isLeapYear(year)) {
+            System.out.printf("%d is a leap year.\n", year);
+        } else {
+            System.out.printf("%d is not a leap year.\n", year);
+        }
+    }
+
+    /** Must be provided an integer as a command line argument ARGS. */
+    public static void main(String[] args) {
+        if (args.length < 1) {
+            System.out.println("Please enter command line arguments.");
+            System.out.println("e.g. java Year 2000");
+        }
+        for (int i = 0; i < args.length; i++) {
+            try {
+                int year = Integer.parseInt(args[i]);
+                checkLeapYear(year);
+            } catch (NumberFormatException e) {
+                System.out.printf("%s is not a valid number.\n", args[i]);
+            }
+        }
+    }
+
+
+
+}
